@@ -1,0 +1,45 @@
+--- ./acestream-launcher.desktop	2019-12-16 04:27:44.480332070 +0000
++++ ./acestream-launcher.desktop.orig	2019-12-16 04:27:15.732461462 +0000
+@@ -3,7 +3,7 @@ Version=1.0
+ Name=AceStream Launcher
+ GenericName=Media player
+ Comment=Open AceStream links with any Media Player
+-Exec=acestream-launcher %u
++Exec=gnome-terminal -- acestream-launcher %u
+ TryExec=acestream-launcher
+ Icon=multimedia-video-player
+ Terminal=false
+--- ./acestream_launcher/config.py.orig	2019-12-16 04:28:33.188112851 +0000
++++ ./acestream_launcher/config.py	2019-12-16 04:49:29.102449232 +0000
+@@ -12,9 +12,9 @@ class ConfigHandler(object):
+   def __init__(self):
+     self.isatty = sys.stdin.isatty()
+     self.config = configparser.RawConfigParser({
+-      'engine':  'acestreamengine --client-console',
++      'engine':  'acestreamengine --client-gtk',
+       'player':  'mpv',
+-      'timeout': '30',
++      'timeout': '90',
+       'verbose': 'False'
+     })
+ 
+--- ./acestream_launcher/launcher.py.orig	2019-12-16 04:30:27.423598715 +0000
++++ ./acestream_launcher/launcher.py	2019-12-16 04:59:39.828686128 +0000
+@@ -50,6 +50,7 @@ class StreamLauncher(object):
+     )
+ 
+     self.args = parser.parse_args()
++    print ("You may run: xdg-open %s " % self.args.url)
+     self.noty = NotifyHandler(self.args.player)
+ 
+   @property
+--- ./acestream_launcher/player.py.orig	2019-12-16 05:00:08.522556044 +0000
++++ ./acestream_launcher/player.py	2019-12-16 04:59:25.583750708 +0000
+@@ -17,6 +17,7 @@ class PlayerHandler(Observable):
+   def start(self, url, **kwargs):
+     cmargs = self.args
+     cmargs.append(url)
++    print("\nYou may run: %s" % " ".join(cmargs))
+ 
+     thread = Thread(target=self._start_process, args=(cmargs), kwargs=kwargs)
+     thread.setDaemon(True)
