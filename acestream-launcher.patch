@@ -10,13 +10,10 @@
  Icon=multimedia-video-player
  Terminal=false
 --- ./acestream_launcher/config.py.orig	2019-12-16 04:28:33.188112851 +0000
-+++ ./acestream_launcher/config.py	2019-12-16 04:49:29.102449232 +0000
-@@ -12,9 +12,9 @@ class ConfigHandler(object):
-   def __init__(self):
-     self.isatty = sys.stdin.isatty()
++++ ./acestream_launcher/config.py	2020-06-06 04:34:36.177726577 +0100
+@@ -14,7 +14,7 @@ class ConfigHandler(object):
      self.config = configparser.RawConfigParser({
--      'engine':  'acestreamengine --client-console',
-+      'engine':  'acestreamengine --client-gtk',
+       'engine':  'acestreamengine --client-console',
        'player':  'mpv',
 -      'timeout': '30',
 +      'timeout': '90',

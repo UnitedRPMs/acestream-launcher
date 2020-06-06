@@ -1,6 +1,6 @@
 Name: acestream-launcher
 Version: 2.0.1
-Release: 2%{?dist}
+Release: 3%{?dist}
 Summary: Ace Stream Launcher
 License: GPLv3
 Group: Productivity/Multimedia/Other
@@ -35,6 +35,10 @@ Acestream Launcher allows you to open Acestream links with a Media Player of you
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Sat Jun 06 2020 Sérgio Basto <sergio@serjux.com> - 2.0.1-3
+- acestreamengine --client-gtk doesn't work anymore because we don't have
+  python2-appindicator, moving to default
+
 * Mon Dec 16 2019 Sérgio Basto <sergio@serjux.com> - 2.0.1-2
 - custom patch
 
