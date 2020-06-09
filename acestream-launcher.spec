@@ -10,6 +10,7 @@ Patch1: acestream-launcher.patch
 BuildArch: noarch
 BuildRequires: python%{python3_pkgversion}-devel
 BuildRequires: python%{python3_pkgversion}-setuptools
+BuildRequires: python3-rpm-macros
 BuildRequires: fdupes
 #!BuildIgnore: acestream-engine
 Requires: curl python3 python3-acestream acestream-engine mpv
