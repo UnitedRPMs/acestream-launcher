@@ -1,11 +1,12 @@
 Name: acestream-launcher
 Version: 2.0.1
-Release: 3%{?dist}
+Release: 4%{?dist}
 Summary: Ace Stream Launcher
 License: GPLv3
 Group: Productivity/Multimedia/Other
 URL: https://github.com/jonian/%{name}
 Source: %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0: v2.0.1...ce1c637c0bae7687b84a4f11a5cfc696766df394.diff
 Patch1: acestream-launcher.patch
 BuildArch: noarch
 BuildRequires: python%{python3_pkgversion}-devel
@@ -19,8 +20,7 @@ Requires: curl python3 python3-acestream acestream-engine mpv
 Acestream Launcher allows you to open Acestream links with a Media Player of your choice.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %py3_build
@@ -36,6 +36,9 @@ Acestream Launcher allows you to open Acestream links with a Media Player of you
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Mon Jun 29 2020 Sérgio Basto <sergio@serjux.com> - 2.0.1-4
+- Add support for file:// .acelive and .torrent urls
+
 * Sat Jun 06 2020 Sérgio Basto <sergio@serjux.com> - 2.0.1-3
 - acestreamengine --client-gtk doesn't work anymore because we don't have
   python2-appindicator, moving to default

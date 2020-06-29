@@ -1,0 +1,25 @@
+diff --git a/acestream_launcher/stream.py b/acestream_launcher/stream.py
+index f636339..75a29d8 100644
+--- a/acestream_launcher/stream.py
++++ b/acestream_launcher/stream.py
+@@ -1,3 +1,4 @@
++import os
+ import time
+ 
+ from acestream.object import Observable
+@@ -48,7 +49,14 @@ def _start_stream(self):
+     self.stream.start()
+ 
+   def _parse_stream_param(self, param):
+-    if param.startswith('http'):
++    files = ['.acelive', '.torrent']
++    links = ['http://', 'https://', 'file://']
++
++    if any([param.endswith(f) for f in files]):
++      if not param.startswith('file://'):
++        param = "file://%s" % os.path.realpath(param)
++
++    if any([param.startswith(l) for l in links]):
+       return { 'url': param }
+     else:
+       return { 'id': param.split('://')[-1] }
