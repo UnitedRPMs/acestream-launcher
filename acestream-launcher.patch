@@ -1,14 +1,3 @@
---- ./acestream-launcher.desktop	2019-12-16 04:27:44.480332070 +0000
-+++ ./acestream-launcher.desktop.orig	2019-12-16 04:27:15.732461462 +0000
-@@ -3,7 +3,7 @@ Version=1.0
- Name=AceStream Launcher
- GenericName=Media player
- Comment=Open AceStream links with any Media Player
--Exec=acestream-launcher %u
-+Exec=gnome-terminal -- acestream-launcher %u
- TryExec=acestream-launcher
- Icon=multimedia-video-player
- Terminal=false
 --- ./acestream_launcher/config.py.orig	2019-12-16 04:28:33.188112851 +0000
 +++ ./acestream_launcher/config.py	2020-06-06 04:34:36.177726577 +0100
 @@ -14,7 +14,7 @@ class ConfigHandler(object):
@@ -40,3 +29,19 @@
  
      thread = Thread(target=self._start_process, args=(cmargs), kwargs=kwargs)
      thread.setDaemon(True)
+--- ./acestream-launcher.desktop.orig	2019-12-16 04:27:15.732461462 +0000
++++ ./acestream-launcher.desktop	2020-06-29 00:16:55.957484782 +0100
+@@ -3,11 +3,11 @@ Version=1.0
+ Name=AceStream Launcher
+ GenericName=Media player
+ Comment=Open AceStream links with any Media Player
+-Exec=acestream-launcher %u
++Exec=gnome-terminal -- acestream-launcher %u
+ TryExec=acestream-launcher
+ Icon=multimedia-video-player
+ Terminal=false
+ Type=Application
+-MimeType=x-scheme-handler/acestream;
++MimeType=x-scheme-handler/acestream;application/x-acelive;
+ X-KDE-Protocols=acestream
+ NoDisplay=true
