@@ -35,11 +35,11 @@
  Name=AceStream Launcher
  GenericName=Media player
  Comment=Open AceStream links with any Media Player
--Exec=acestream-launcher %u
-+Exec=gnome-terminal -- acestream-launcher %u
+ Exec=acestream-launcher %u
  TryExec=acestream-launcher
  Icon=multimedia-video-player
- Terminal=false
+-Terminal=false
++Terminal=true
  Type=Application
 -MimeType=x-scheme-handler/acestream;
 +MimeType=x-scheme-handler/acestream;application/x-acelive;
