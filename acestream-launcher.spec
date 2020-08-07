@@ -1,6 +1,6 @@
 Name: acestream-launcher
 Version: 2.0.1
-Release: 5%{?dist}
+Release: 6%{?dist}
 Summary: Ace Stream Launcher
 License: GPLv3
 Group: Productivity/Multimedia/Other
@@ -40,6 +40,10 @@ install -p -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/mime/packages/
 %{_datadir}/mime/packages/acelive.xml
 
 %changelog
+
+* Fri Aug 07 2020 Alessandro Astone <ales.astone AT gmail DOT com> - 2.0.1-6
+- Don't hard code gnome-terminal
+
 * Thu Jul 02 2020 Sérgio Basto <sergio@serjux.com> - 2.0.1-5
 - Register mime type for .acelive files
 
