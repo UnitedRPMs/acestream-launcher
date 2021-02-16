@@ -1,26 +1,26 @@
---- ./acestream_launcher/config.py.orig	2019-12-16 04:28:33.188112851 +0000
-+++ ./acestream_launcher/config.py	2020-06-06 04:34:36.177726577 +0100
-@@ -14,7 +14,7 @@ class ConfigHandler(object):
-     self.config = configparser.RawConfigParser({
-       'engine':  'acestreamengine --client-console',
+--- ./acestream_launcher/config.py.orig	2021-02-16 20:31:13.073533581 +0000
++++ ./acestream_launcher/config.py	2021-02-16 20:31:32.457666038 +0000
+@@ -16,7 +16,7 @@ class ConfigHandler(object):
+       'host':    '127.0.0.1',
+       'port':    '6878',
        'player':  'mpv',
 -      'timeout': '30',
 +      'timeout': '90',
        'verbose': 'False'
      })
  
---- ./acestream_launcher/launcher.py.orig	2019-12-16 04:30:27.423598715 +0000
-+++ ./acestream_launcher/launcher.py	2019-12-16 04:59:39.828686128 +0000
-@@ -50,6 +50,7 @@ class StreamLauncher(object):
-     )
- 
+--- ./acestream_launcher/launcher.py.orig	2021-02-16 20:31:13.073533581 +0000
++++ ./acestream_launcher/launcher.py	2021-02-16 20:31:32.458666045 +0000
+@@ -52,6 +52,7 @@ class StreamLauncher(object):
+     self.host = config.get('host')
+     self.port = config.getint('port')
      self.args = parser.parse_args()
-+    print ("You may run: xdg-open %s " % self.args.url)
++    print ("You may run: acestream-launcher %s" % self.args.url)
      self.noty = NotifyHandler(self.args.player)
  
    @property
---- ./acestream_launcher/player.py.orig	2019-12-16 05:00:08.522556044 +0000
-+++ ./acestream_launcher/player.py	2019-12-16 04:59:25.583750708 +0000
+--- ./acestream_launcher/player.py.orig	2021-02-16 20:31:13.074533587 +0000
++++ ./acestream_launcher/player.py	2021-02-16 20:31:32.458666045 +0000
 @@ -17,6 +17,7 @@ class PlayerHandler(Observable):
    def start(self, url, **kwargs):
      cmargs = self.args
@@ -29,12 +29,9 @@
  
      thread = Thread(target=self._start_process, args=(cmargs), kwargs=kwargs)
      thread.setDaemon(True)
---- ./acestream-launcher.desktop.orig	2019-12-16 04:27:15.732461462 +0000
-+++ ./acestream-launcher.desktop	2020-06-29 00:16:55.957484782 +0100
-@@ -3,11 +3,11 @@ Version=1.0
- Name=AceStream Launcher
- GenericName=Media player
- Comment=Open AceStream links with any Media Player
+--- ./acestream-launcher.desktop.orig	2021-02-16 20:31:13.074533587 +0000
++++ ./acestream-launcher.desktop	2021-02-16 20:31:32.458666045 +0000
+@@ -6,8 +6,8 @@ Comment=Open AceStream links with any Me
  Exec=acestream-launcher %u
  TryExec=acestream-launcher
  Icon=multimedia-video-player

@@ -1,13 +1,12 @@
 Name: acestream-launcher
-Version: 2.0.1
-Release: 6%{?dist}
+Version: 2.0.3
+Release: 1%{?dist}
 Summary: Ace Stream Launcher
 License: GPLv3
 Group: Productivity/Multimedia/Other
 URL: https://github.com/jonian/%{name}
 Source0: %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1: acelive.xml
-Patch0: v2.0.1...ce1c637c0bae7687b84a4f11a5cfc696766df394.diff
 Patch1: acestream-launcher.patch
 BuildArch: noarch
 BuildRequires: python%{python3_pkgversion}-devel
@@ -40,6 +39,9 @@ install -p -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/mime/packages/
 %{_datadir}/mime/packages/acelive.xml
 
 %changelog
+* Tue Feb 16 2021 Sérgio Basto <sergio@serjux.com> - 2.0.3-1
+- Update to 2.0.3
+
 
 * Fri Aug 07 2020 Alessandro Astone <ales.astone AT gmail DOT com> - 2.0.1-6
 - Don't hard code gnome-terminal
