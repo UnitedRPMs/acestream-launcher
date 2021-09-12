@@ -1,17 +1,19 @@
---- ./acestream_launcher/config.py.orig	2021-02-16 20:31:13.073533581 +0000
-+++ ./acestream_launcher/config.py	2021-02-16 20:31:32.457666038 +0000
+diff -rup acestream-launcher-2.1.0.orig/acestream_launcher/config.py acestream-launcher-2.1.0/acestream_launcher/config.py
+--- acestream-launcher-2.1.0.orig/acestream_launcher/config.py	2021-04-28 18:20:54.000000000 +0100
++++ acestream-launcher-2.1.0/acestream_launcher/config.py	2021-09-11 15:56:55.005174668 +0100
 @@ -16,7 +16,7 @@ class ConfigHandler(object):
        'host':    '127.0.0.1',
        'port':    '6878',
        'player':  'mpv',
 -      'timeout': '30',
 +      'timeout': '90',
+       'hls': 'False',
        'verbose': 'False'
      })
- 
---- ./acestream_launcher/launcher.py.orig	2021-02-16 20:31:13.073533581 +0000
-+++ ./acestream_launcher/launcher.py	2021-02-16 20:31:32.458666045 +0000
-@@ -52,6 +52,7 @@ class StreamLauncher(object):
+diff -rup acestream-launcher-2.1.0.orig/acestream_launcher/launcher.py acestream-launcher-2.1.0/acestream_launcher/launcher.py
+--- acestream-launcher-2.1.0.orig/acestream_launcher/launcher.py	2021-09-11 15:55:27.295577617 +0100
++++ acestream-launcher-2.1.0/acestream_launcher/launcher.py	2021-09-11 15:56:27.089984644 +0100
+@@ -58,6 +58,7 @@ class StreamLauncher(object):
      self.host = config.get('host')
      self.port = config.getint('port')
      self.args = parser.parse_args()
@@ -19,8 +21,9 @@
      self.noty = NotifyHandler(self.args.player)
  
    @property
---- ./acestream_launcher/player.py.orig	2021-02-16 20:31:13.074533587 +0000
-+++ ./acestream_launcher/player.py	2021-02-16 20:31:32.458666045 +0000
+diff -rup acestream-launcher-2.1.0.orig/acestream_launcher/player.py acestream-launcher-2.1.0/acestream_launcher/player.py
+--- acestream-launcher-2.1.0.orig/acestream_launcher/player.py	2021-09-11 15:55:27.295577617 +0100
++++ acestream-launcher-2.1.0/acestream_launcher/player.py	2021-09-11 15:56:27.089984644 +0100
 @@ -17,6 +17,7 @@ class PlayerHandler(Observable):
    def start(self, url, **kwargs):
      cmargs = self.args
@@ -29,8 +32,9 @@
  
      thread = Thread(target=self._start_process, args=(cmargs), kwargs=kwargs)
      thread.setDaemon(True)
---- ./acestream-launcher.desktop.orig	2021-02-16 20:31:13.074533587 +0000
-+++ ./acestream-launcher.desktop	2021-02-16 20:31:32.458666045 +0000
+diff -rup acestream-launcher-2.1.0.orig/acestream-launcher.desktop acestream-launcher-2.1.0/acestream-launcher.desktop
+--- acestream-launcher-2.1.0.orig/acestream-launcher.desktop	2021-09-11 15:55:27.296577624 +0100
++++ acestream-launcher-2.1.0/acestream-launcher.desktop	2021-09-11 15:56:27.090984651 +0100
 @@ -6,8 +6,8 @@ Comment=Open AceStream links with any Me
  Exec=acestream-launcher %u
  TryExec=acestream-launcher

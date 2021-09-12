@@ -1,5 +1,5 @@
 Name: acestream-launcher
-Version: 2.0.3
+Version: 2.1.0
 Release: 1%{?dist}
 Summary: Ace Stream Launcher
 License: GPLv3
@@ -13,7 +13,11 @@ BuildRequires: python%{python3_pkgversion}-devel
 BuildRequires: python%{python3_pkgversion}-setuptools
 BuildRequires: python3-rpm-macros
 #!BuildIgnore: acestream-engine
-Requires: curl python3 python3-acestream acestream-engine mpv
+Requires: curl
+Requires: python3
+Requires: python3-acestream
+Requires: acestream-engine
+Requires: mpv
 
 %description
 Acestream Launcher allows you to open Acestream links with a Media Player of your choice.
@@ -39,6 +43,9 @@ install -p -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/mime/packages/
 %{_datadir}/mime/packages/acelive.xml
 
 %changelog
+* Tue Aug 10 2021 Sérgio Basto <sergio@serjux.com> - 2.1.0-1
+- Update to 2.1.0
+
 * Tue Feb 16 2021 Sérgio Basto <sergio@serjux.com> - 2.0.3-1
 - Update to 2.0.3
 
